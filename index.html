@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manush Varikuti — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B26;
+    --ink-2:#152534;
+    --paper:#F2EFE6;
+    --amber:#E8A33D;
+    --steel:#93A6B5;
+    --text-dark:#16232C;
+    --line-dark:rgba(242,239,230,0.14);
+    --line-light:rgba(22,35,44,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text-dark);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+  }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  a{ color:inherit; }
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:96px 0 72px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero p.role{
+    margin-top:18px;
+    max-width:46ch;
+    color:var(--steel);
+    font-size:1.05rem;
+  }
+  .hero-links{
+    margin-top:32px;
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:0.92rem;
+  }
+  .hero-links a{
+    text-decoration:none;
+    border-bottom:1px solid var(--steel);
+    padding-bottom:2px;
+    color:var(--paper);
+  }
+  .hero-links a:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* dashboard readout */
+  .readout{
+    border:1px solid var(--line-dark);
+    padding:22px 22px 18px;
+  }
+  .readout-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    color:var(--steel);
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+  }
+  .readout-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:10px 0;
+    border-top:1px solid var(--line-dark);
+  }
+  .readout-row:first-of-type{ border-top:none; }
+  .readout-label{ color:var(--steel); font-size:0.86rem; }
+  .readout-value{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:1.15rem;
+    color:var(--amber);
+  }
+
+  /* ---------- METRICS STRIP ---------- */
+  section.metrics{
+    background:var(--ink-2);
+    color:var(--paper);
+    padding:44px 0;
+  }
+  .metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .metric .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:2rem;
+    color:var(--amber);
+  }
+  .metric .label{
+    margin-top:6px;
+    font-size:0.82rem;
+    color:var(--steel);
+    max-width:20ch;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  main section{
+    padding:72px 0;
+    border-bottom:1px solid var(--line-light);
+  }
+  main section:last-of-type{ border-bottom:none; }
+  h2.section-title{
+    font-size:1.6rem;
+    margin-bottom:36px;
+  }
+
+  /* experience */
+  .job{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:26px 0;
+    border-top:1px solid var(--line-light);
+  }
+  .job:first-of-type{ border-top:none; }
+  .job-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--steel);
+    padding-top:4px;
+  }
+  .job-role{
+    font-family:'Fraunces',serif;
+    font-size:1.15rem;
+    font-weight:500;
+  }
+  .job-co{
+    font-size:0.92rem;
+    color:#4a5a63;
+    margin-top:2px;
+    margin-bottom:12px;
+  }
+  .job ul{
+    margin:0;
+    padding-left:18px;
+  }
+  .job li{
+    margin-bottom:6px;
+    font-size:0.94rem;
+  }
+
+  /* skills */
+  .skills-table{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    row-gap:16px;
+    column-gap:24px;
+  }
+  .skills-table dt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem;
+    color:var(--steel);
+    padding-top:2px;
+  }
+  .skills-table dd{
+    margin:0;
+    font-size:0.95rem;
+  }
+
+  /* education */
+  .edu{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:20px 0;
+    border-top:1px solid var(--line-light);
+  }
+  .edu:first-of-type{ border-top:none; }
+  .edu-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--steel);
+  }
+  .edu-deg{ font-weight:600; }
+  .edu-school{ color:#4a5a63; font-size:0.92rem; margin-top:2px; }
+
+  /* footer */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 0 40px;
+  }
+  footer h2{
+    font-size:1.5rem;
+    color:var(--paper);
+    margin-bottom:14px;
+  }
+  footer p{ color:var(--steel); max-width:44ch; }
+  .footer-links{
+    margin-top:26px;
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    text-decoration:none;
+    border-bottom:1px solid var(--steel);
+    padding-bottom:2px;
+    font-size:0.92rem;
+  }
+  .footer-links a:hover{ border-color:var(--amber); color:var(--amber); }
+  .footer-note{
+    margin-top:40px;
+    font-size:0.78rem;
+    color:#4a5a63;
+  }
+
+  @media (max-width:720px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .metrics-grid{ grid-template-columns:repeat(2,1fr); }
+    .job, .edu{ grid-template-columns:1fr; }
+    .skills-table{ grid-template-columns:1fr; row-gap:4px; }
+    .skills-table dt{ margin-top:14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Manush Varikuti</h1>
+      <p class="role">Data analyst and PhD researcher who turns ambiguous business questions into decisions people can act on — five years across SQL, Python, and machine learning.</p>
+      <div class="hero-links">
+        <a href="mailto:manushvarikuti@gmail.com">Email</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="resume.pdf" target="_blank">Resume (PDF)</a>
+      </div>
+    </div>
+    <div class="readout">
+      <div class="readout-title">CURRENT_ROLE</div>
+      <div class="readout-row">
+        <span class="readout-label">Position</span>
+        <span class="readout-value" style="font-size:0.95rem;">Business Analyst</span>
+      </div>
+      <div class="readout-row">
+        <span class="readout-label">Company</span>
+        <span class="readout-value" style="font-size:0.95rem;">RS Technologies</span>
+      </div>
+      <div class="readout-row">
+        <span class="readout-label">Based in</span>
+        <span class="readout-value" style="font-size:0.95rem;">Jersey City, NJ</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="metrics">
+  <div class="wrap metrics-grid">
+    <div class="metric">
+      <div class="num">5+</div>
+      <div class="label">years across data &amp; business analysis</div>
+    </div>
+    <div class="metric">
+      <div class="num">15%</div>
+      <div class="label">retention lift from a churn model I built</div>
+    </div>
+    <div class="metric">
+      <div class="num">40%</div>
+      <div class="label">cut in ETL processing time</div>
+    </div>
+    <div class="metric">
+      <div class="num">3</div>
+      <div class="label">industry certifications (AWS, Tableau, Power BI)</div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="wrap" id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="job">
+      <div class="job-date">2026 —<br>Present</div>
+      <div>
+        <div class="job-role">Business Analyst</div>
+        <div class="job-co">RS Technologies Inc. · Novi, MI</div>
+        <ul>
+          <li>Gather and document requirements, translating them into functional specs for development teams</li>
+          <li>Build SQL queries and Power BI dashboards to track KPIs for stakeholders</li>
+          <li>Lead UAT sessions, coordinating QA and business users before releases</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">2025 —<br>2026</div>
+      <div>
+        <div class="job-role">Business Analyst</div>
+        <div class="job-co">Sirian Group Inc. · Plano, TX</div>
+        <ul>
+          <li>Analyzed workflows to identify inefficiencies and recommend data-driven improvements</li>
+          <li>Built SQL reports and Tableau visualizations for executive reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">2024 —<br>2025</div>
+      <div>
+        <div class="job-role">Data Analyst</div>
+        <div class="job-co">Nile Tech Inc. · Jersey City, NJ</div>
+        <ul>
+          <li>Built a machine learning model to predict customer churn, lifting retention by 15%</li>
+          <li>Optimized ETL pipelines, cutting processing time by 40%</li>
+          <li>Designed Tableau and Power BI dashboards used for ongoing KPI tracking</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">2019 —<br>2021</div>
+      <div>
+        <div class="job-role">Data Analyst</div>
+        <div class="job-co">In Tecnet Limited · Hyderabad, India</div>
+        <ul>
+          <li>Automated data processing scripts in Python, cutting manual effort by 30%</li>
+          <li>Ran A/B tests to evaluate marketing campaign performance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <dl class="skills-table">
+      <dt>Languages</dt>
+      <dd>Python, SQL, R</dd>
+      <dt>Machine learning</dt>
+      <dd>Predictive modeling, classification, A/B testing</dd>
+      <dt>BI &amp; visualization</dt>
+      <dd>Tableau, Power BI, Looker</dd>
+      <dt>Data engineering</dt>
+      <dd>ETL pipelines, data warehousing</dd>
+      <dt>Cloud</dt>
+      <dd>AWS, Azure</dd>
+      <dt>Databases</dt>
+      <dd>SQL Server, MySQL, PostgreSQL, Oracle SQL</dd>
+    </dl>
+  </section>
+
+  <section class="wrap" id="education">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu">
+      <div class="edu-date">2026 — Present</div>
+      <div>
+        <div class="edu-deg">PhD in Management</div>
+        <div class="edu-school">Campbellsville University</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-date">GPA 4.0</div>
+      <div>
+        <div class="edu-deg">MS in Computer Science</div>
+        <div class="edu-school">Campbellsville University</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-date">GPA 3.8</div>
+      <div>
+        <div class="edu-deg">BS in Computer Science</div>
+        <div class="edu-school">SJB Institute of Technology</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>Open to data analyst, business analyst, and product support roles. Based in Jersey City, NJ.</p>
+    <div class="footer-links">
+      <a href="mailto:manushvarikuti@gmail.com">manushvarikuti@gmail.com</a>
+      <a href="tel:+16236289242">+1-623-628-9242</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-note">Built and maintained on GitHub Pages.</div>
+  </div>
+</footer>
+
+</body>
+</html>
